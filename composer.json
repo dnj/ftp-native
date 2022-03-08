@@ -34,11 +34,5 @@
 			"@test:codestyle"
 		]
 	},
-	"minimum-stability": "dev",
-	"repositories": [
-		{
-			"type": "path",
-			"url": "/home/composer/ftp"
-		}
-	]
+	"minimum-stability": "dev"
 }
