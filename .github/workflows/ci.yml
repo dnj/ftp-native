@@ -1,0 +1,40 @@
+name: PHP-Test
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Setup PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.1'
+        tools: 'composer:v2'
+
+    - name: Check Versions
+      run: |
+          php -v
+          php -m
+          composer --version
+
+    - name: Validate composer.json and composer.lock
+      run: composer validate
+
+    - name: Install dependencies
+      run: composer install --prefer-dist
+
+    - name: PHPStan Static Analysis
+      uses: php-actions/phpstan@v2
+      with:
+        command: analyse
+        configuration: phpstan.neon.dist
+        path: src
+        memory_limit: 128M
+        php_version: 8.1
