@@ -1,0 +1,44 @@
+{
+	"name": "dnj/ftp-native",
+	"description": "FTP Contracts for PHP",
+	"license": "MIT",
+	"autoload": {
+		"psr-4": {
+			"dnj\\FTP\\Native\\": "src"
+		}
+	},
+	"autoload-dev": {
+		"psr-4": {
+			"dnj\\FTP\\Native\\Tests\\": "tests"
+		}
+	},
+	"require": {
+		"php": "^8.0|^7.4",
+		"dnj/ftp": "*"
+	},
+	"require-dev": {
+		"phpstan/phpstan": "^1.4.6",
+		"phpunit/phpunit": "^9.5",
+		"friendsofphp/php-cs-fixer": "^3.1"
+	},
+	"scripts": {
+		"test:composer-validate": "composer validate",
+		"test:types": "./vendor/bin/phpstan analyse",
+		"test:phpunit": "vendor/bin/phpunit",
+		"test:codestyle": "vendor/bin/php-cs-fixer fix -v --dry-run --stop-on-violation --using-cache=no",
+		"test:codestyle:fix": "vendor/bin/php-cs-fixer fix -v --using-cache=no",
+		"test": [
+			"@test:composer-validate",
+			"@test:types",
+			"@test:phpunit",
+			"@test:codestyle"
+		]
+	},
+	"minimum-stability": "dev",
+	"repositories": [
+		{
+			"type": "path",
+			"url": "/home/composer/ftp"
+		}
+	]
+}

@@ -1,0 +1,5 @@
+/vendor
+/.php-cs-fixer.cache
+.test.php
+.phpunit.cache
+junit.xml
